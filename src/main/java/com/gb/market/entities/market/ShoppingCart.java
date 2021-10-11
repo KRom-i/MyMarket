@@ -1,6 +1,7 @@
 package com.gb.market.entities.market;
 
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -9,9 +10,11 @@ import static java.util.Objects.isNull;
 
 
 @Component
+@Data
 public class ShoppingCart {
 
     @Data
+    @ToString
     public class Item{
 
         private Long id;
@@ -35,7 +38,11 @@ public class ShoppingCart {
         public Double getSum () {
             return sum;
         }
+
+
     }
+    private int numItems;
+    private double sumItems;
 
     private LinkedHashMap<Long, Item> items;
 
@@ -61,6 +68,9 @@ public class ShoppingCart {
         } else {
             getMap ().put (product.getId (), new Item (product));
         };
+
+        numItems = num ();
+        sumItems = sum ();
     }
 
     public void remove (Product product) {
@@ -76,10 +86,15 @@ public class ShoppingCart {
             item.sum -= product.getPrice ();
             item.num -= 1;
         }
+
+        numItems = num ();
+        sumItems = sum ();
     }
 
     public void removeItem (Long id) {
         getMap ().remove (id);
+        numItems = num ();
+        sumItems = sum ();
     }
 
     public int num() {

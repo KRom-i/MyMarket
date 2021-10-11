@@ -11,8 +11,6 @@
 
 <body>
 
-
-
 <div th:replace="~{navigation :: navi(Home)}" />
 
 <div th:if="${shoppingCart.isEmpty}" class="container">
@@ -67,7 +65,14 @@
         <td/>
         </tr>
     </table>
+
+
+    <table id="cart_table" class="table">
+    </table>
+
+
 </div>
 
+<script src="js/ShoppingCart.js"></script>
 </body>
 </html>
