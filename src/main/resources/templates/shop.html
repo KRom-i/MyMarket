@@ -39,6 +39,13 @@
             <td/>
         </tr>
     </table>
+
+    <div>
+        <a class="btn btn-primary"
+                th:each="n: ${#numbers.sequence(1, products.getTotalPages )}"
+                th:text="${n}" th:href="@{'/shop/' + ${n - 1} + '/' + ${products.getSize()}}"></a>
+    </div>
+
 </div>
 
 </body>

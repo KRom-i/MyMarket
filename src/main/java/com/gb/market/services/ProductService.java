@@ -3,17 +3,19 @@ package com.gb.market.services;
 import com.gb.market.entities.market.Product;
 import com.gb.market.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.domain.Pageable;
+
+
 
 @Service
 public class ProductService {
+
     @Autowired
     private ProductRepository productRepository;
-    public List<Product> getAllProducts() {
-        List<Product> products = productRepository.findAll();
-        return products;
+    public Page<Product> getAllProducts(Pageable pageable) {
+        return productRepository.findAll (pageable);
     }
 
     public Product getProductById (Long id) {
