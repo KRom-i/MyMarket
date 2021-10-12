@@ -1,4 +1,4 @@
-package com.gb.market.entities.market;
+package com.gb.market.entites;
 
 import lombok.Data;
 
@@ -15,4 +15,7 @@ public class Category {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "description")
+    private String description;
 }

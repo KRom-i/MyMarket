@@ -1,39 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <html xmlns:th="http://www.thymeleaf.org">
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Profile</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+
+    <title>Профиль</title>
+
+    <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<div th:replace="~{navigation :: navi(Profile)}"/>
+
+<div th:replace="~{navigation :: navi(Profile)}" />
 
 <div class="container">
     <br>
-    <h1>Информация о пользователе</h1>
-    <hr>
-
-    <a>ФИО: </a>
-    <a th:utext="${user.getFullName}"></a>
-    <hr>
-
-    <a>Email : </a>
-    <a th:utext="${user.email}"></a>
-    <hr>
-
-    <a>Номер телефона: </a>
-    <a th:utext="${user.phone}"></a>
-    <hr>
-
-    <a sec:authorize="hasRole('ADMIN')" th:each="role : ${user.roles}">
-        <a th:utext="${role.name}"></a>
-        <br>
-    </a>
-    <hr>
+    <h1>Профиль</h1>
 
 </div>
-
 </body>
 </html>

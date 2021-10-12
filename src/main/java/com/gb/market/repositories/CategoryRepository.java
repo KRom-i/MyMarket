@@ -1,11 +1,10 @@
 package com.gb.market.repositories;
 
 
-import com.gb.market.entites.User;
+import com.gb.market.entites.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-    User findOneByUserName(String userName);
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 }

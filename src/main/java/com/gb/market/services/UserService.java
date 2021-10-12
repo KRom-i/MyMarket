@@ -1,9 +1,11 @@
 package com.gb.market.services;
 
-import com.gb.market.entities.user.User;
+
+import com.gb.market.entites.SystemUser;
+import com.gb.market.entites.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Service;
 
 public interface UserService extends UserDetailsService {
-    User findByUserName(String userName);
+    User findByUserName(String username);
+    boolean save(SystemUser systemUser);
 }

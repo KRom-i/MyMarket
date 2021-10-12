@@ -1,14 +1,15 @@
 package com.gb.market.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController {
-
     @RequestMapping("/")
-    public String index() {
+    public String showHomePage(HttpServletRequest request, HttpServletResponse response) {
         return "index";
     }
 }
