@@ -53,6 +53,10 @@
             <td th:text="${product.price}"/>
             <td>
                 <a th:href="@{'/shop/cart/add/' + ${product.id}}" class="btn btn-primary" onclick="sendName()">Добавить в корзину</a>
+                <form th:action="@{/shop}"
+                      th:object="${product}" method="POST">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
             </td>
         </tr>
         </tbody>

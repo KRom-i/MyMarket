@@ -11,12 +11,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -84,25 +87,18 @@ public class ShopController {
         return "shop-page";
     }
 
+
     private final static String QUEUE_NAME = "hello";
 
-//    @GetMapping("/cart/add/{id}")
-//    public String addProductToCart(Model model, @PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
-//        shoppingCartService.addToCart(httpServletRequest.getSession(), id);
-//        String referrer = httpServletRequest.getHeader("referer");
-//
-//        ConnectionFactory factory = new ConnectionFactory();
-//        factory.setHost("localhost");
-//        try (Connection connection = factory.newConnection();
-//             Channel channel = connection.createChannel()){
-//            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-//            String msg = "Hello World!";
-//            channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
-//            System.out.println("sent " + msg);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return "redirect:" + referrer;
-//    }
+    @GetMapping("/cart/add/{id}")
+    public String addProductToCart(Model model, @PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
+        shoppingCartService.addToCart(httpServletRequest.getSession(), id);
+        String referrer = httpServletRequest.getHeader("referer");
+
+
+
+        System.out.println (referrer);
+
+        return "redirect:" + referrer;
+    }
 }
