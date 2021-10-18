@@ -11,6 +11,8 @@
 
 <body>
 
+<div th:replace="~{navigation :: navi(Login)}"/>
+
 <div style="margin-top: 50px; max-width: 350px;" class="container">
     <h2>Аутентификация</h2>
     <form th:action="@{/authenticateTheUser}" method="POST">
@@ -22,7 +24,13 @@
             <label>Пароль:</label>
             <input type="password" name="password" placeholder="Введите пароль" class="form-control">
         </div>
+        <div class="d-grid gap-2 d-md-block">
         <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="button">Button</button>
+            <button class="btn btn-primary" type="button">Button</button>
+        </div>
     </form>
 
     <div th:if="${param.logout} != null">
