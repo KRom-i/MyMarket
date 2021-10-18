@@ -1,12 +1,22 @@
 package com.gb.market.services;
 
+import com.gb.market.entities.market.Category;
 import com.gb.market.entities.market.Product;
 import com.gb.market.repositories.ProductRepository;
 import com.gb.market.utils.ParamsPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import static java.util.Objects.isNull;
 
 
 @Service
@@ -14,6 +24,9 @@ public class ProductService {
 
     @Autowired
     private ParamsPage paramsPage;
+    @Autowired
+    private CategoryService categoryService;
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -40,5 +53,32 @@ public class ProductService {
         return paramsPage;
     }
 
+    public boolean save (Product product) {
 
+        if (productRepository.findOneByTitle (product.getTitle ()) != null){
+            return false;
+        }
+
+        product.setCategory (categoryService.findById (product.getCategory ().getId ()));
+        product.setVendorCode (getNewVendorCode());
+        product.setCreateAt (LocalDateTime.now ());
+
+        productRepository.save (product);
+
+        return true;
+
+    }
+
+    private String getNewVendorCode(){
+        Long lastId = productRepository.findTopByOrderByIdDesc ().getId ();
+        return String.format("%08d", lastId);
+    }
+
+    public Page<Product> getProductsLastInSize(int size){
+        return productRepository.findByOrderByIdDesc (Pageable.ofSize (size));
+    }
+
+    public List<Category> getAllCategories () {
+        return categoryService.getAllCategories ();
+    }
 }
