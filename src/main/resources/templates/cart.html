@@ -35,22 +35,22 @@
         </tr>
         </thead>
 
-        <tr th:each="item : ${shoppingCart.getItems}">
-            <td th:text="${item.category}"/>
+        <tr th:each="item : ${shoppingCart.getOrderItems}">
+            <td th:text="${item.product.category.title}"/>
             <td>
-                <span style="font-weight: bold;" th:text="${item.title}"></span>
+                <span style="font-weight: bold;" th:text="${item.product.title}"></span>
             </td>
-            <td th:text="${item.num}">
+            <td th:text="${item.quantity}">
             </td>
-            <td th:text="${item.sum}"/>
+            <td th:text="${item.totalPrice}"/>
             <td style="display: flex; float: right;">
-                <form style="margin-right: 2px;" th:action="@{'/cart/remove/' + ${item.id}}">
+                <form style="margin-right: 2px;" th:action="@{'/cart/remove/' + ${item.product.id}}">
                     <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="-"/>
                 </form>
-                <form style="margin-right: 2px;" th:action="@{'/cart/add/' + ${item.id} + '/true'}">
+                <form style="margin-right: 2px;" th:action="@{'/cart/add/' + ${item.product.id}}">
                     <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="+"/>
                 </form>
-                <form  th:action="@{'/cart/removeItem/' + ${item.id}}">
+                <form  th:action="@{'/cart/removeItem/' + ${item.product.id}}">
                     <input type="submit" class="btn btn-primary" value="Удалить из корзины"/>
                 </form>
             <td/>
@@ -58,8 +58,8 @@
         <tr>
         <td/>
         <td/>
-        <td th:text="${shoppingCart.num}"/>
-        <td th:text="${shoppingCart.sum}"/>
+        <td th:text="${shoppingCart.quantity}"/>
+        <td th:text="${shoppingCart.totalPrice}"/>
         <td style="float: right;">
             <form th:action="@{'/cart/clear'}">
                 <input type="submit" class="btn btn-primary" value="Очистить корзину"/>

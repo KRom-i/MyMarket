@@ -2,104 +2,107 @@ package com.gb.market.entities.market;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import static java.util.Objects.isNull;
 
 
 @Component
+@Data
 public class ShoppingCart {
 
-    @Data
-    public class Item{
 
-        private Long id;
-        private Product product;
-        private Integer num;
-        private Double sum;
-        private String category, title;
+    private List<OrderItem> orderItems;
+    private Double totalPrice;
+    private Long quantity;
 
-        public Item (Product product) {
-            this.id = product.getId ();
-            this.num = 1;
-            this.sum = product.getPrice ();
-            this.category = product.getCategory ().getTitle ();
-            this.title = product.getTitle ();
+    public List<OrderItem> getOrderItems () {
+        if (isNull (orderItems)){
+            orderItems = new ArrayList<> ();
         }
-
-        public Integer getNum () {
-            return num;
-        }
-
-        public Double getSum () {
-            return sum;
-        }
-    }
-
-    private LinkedHashMap<Long, Item> items;
-
-    private LinkedHashMap<Long, Item>  getMap () {
-        if (isNull(items)) {
-            items = new LinkedHashMap<> ();
-        }
-        return items;
-    }
-
-    public Collection<Item> getItems () {
-        return getMap ().values ();
+        return orderItems;
     }
 
     public void add (Product product) {
 
-        if (checkById(product.getId ())){
+        OrderItem item = getOrderItemFromProduct (product.getId ());
 
-            Item item = getMap ().get (product.getId ());
-            item.sum += product.getPrice ();
-            item.num += 1;
+        if (isNull (item)){
+
+            item = new OrderItem ();
+            item.setQuantity (1L);
+            item.setItemPrice (product.getPrice ());
+            item.setTotalPrice (product.getPrice ());
+            item.setProduct (product);
+            getOrderItems ().add (item);
+            calculator();
 
         } else {
-            getMap ().put (product.getId (), new Item (product));
+
+            item.setTotalPrice (item.getTotalPrice () + product.getPrice ());
+            item.setQuantity (item.getQuantity () + 1L);
+            calculator();
         };
     }
 
     public void remove (Product product) {
 
-        if (!checkById(product.getId ())) return;
+        OrderItem item = getOrderItemFromProduct (product.getId ());
 
-        Item item = getMap ().get (product.getId ());
-
-        if (item.num <= 1){
-            getMap ().remove (product.getId ());
-            
-        } else {
-            item.sum -= product.getPrice ();
-            item.num -= 1;
+        if (isNull (item)){
+            return;
         }
+
+        Long quantity = item.getQuantity () - 1L;
+
+        if (quantity <= 0){
+            getOrderItems ().remove (item);
+            calculator();
+            return;
+        }
+
+        item.setTotalPrice (item.getTotalPrice () - product.getPrice ());
+        item.setQuantity (quantity);
+        calculator();
     }
 
     public void removeItem (Long id) {
-        getMap ().remove (id);
+        OrderItem item = getOrderItemFromProduct (id);
+        if (isNull (item)){
+           return;
+        }
+        getOrderItems ().remove (item);
+        calculator();
     }
 
-    public int num() {
-        return getItems ().stream().mapToInt(Item::getNum).sum ();
+    private void calculator(){
+        calcQuantity();
+        calcTotalPrice ();
     }
 
-    public double sum () {
-        return getItems ().stream().mapToDouble (Item::getSum).sum ();
+    private void calcQuantity() {
+        this.quantity = getOrderItems ().stream().mapToLong (OrderItem::getQuantity).sum ();
+    }
+
+    private void calcTotalPrice () {
+        this.totalPrice = getOrderItems ().stream().mapToDouble (OrderItem::getTotalPrice).sum ();
     }
 
     public void clear () {
-        getMap ().clear ();
+        getOrderItems ().clear ();
     }
 
     public boolean isEmpty(){
-        return getMap ().isEmpty ();
+        return getOrderItems ().isEmpty ();
     }
 
-    public boolean checkById(Long id){
-        return getMap ().containsKey (id);
+    private OrderItem getOrderItemFromProduct(Long id) {
+        return getOrderItems ().stream().filter(o ->
+                o.getProduct().getId().equals(id)).findFirst().orElse(null);
     }
 
 }
