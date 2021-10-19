@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 
 <div th:replace="~{navigation :: navi(Home)}" />
 
 <div class="container">
+
+    <div class="border-gray">
     <div>
         <i>Кол-во товаров на странице</i>
         <a class="btn btn-primary" th:if="${products.getTotalElements > 5}"
@@ -26,7 +29,7 @@
     </div>
 
     <div>
-        <h1 th:text="Фильтры" />
+        <h3 th:text="Фильтры" />
 
         <form th:action="@{/shop}" method="get">
             <input hidden th:value="${products.getNumber + 1}" th:name="page">
@@ -39,8 +42,10 @@
         <a class="btn btn-primary" th:if="${paramsPage.getParams.length > 0}"
            th:href="'/shop?&page=' + ${products.getNumber + 1} + '&size=' + ${products.getSize}">Сбросить фильтр</a>
     </div>
+    </div>
 
-    <h1>Коталог товаров</h1>
+    <h2>Коталог товаров</h2>
+    <div class="border-gray">
     <table class="table">
         <thead>
         <tr>
@@ -68,6 +73,7 @@
             <td/>
         </tr>
     </table>
+    </div>
 
     <div>
         <a class="btn btn-primary" th:if="${!products.isFirst}"

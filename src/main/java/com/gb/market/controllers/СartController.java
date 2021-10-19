@@ -19,34 +19,42 @@ public class СartController {
 
     @GetMapping("")
     public String shopPage(Model model, HttpSession session) {
+        demoSession(session);
         model.addAttribute ("shoppingCart", сartService.getCart (session));
         return "cart";
     }
 
     @GetMapping("/add/{id}")
     public String addProduct(@PathVariable("id") Long id, HttpSession session) {
+        demoSession(session);
         сartService.add(id, session);
         return "redirect:/cart";
     }
 
     @GetMapping("/remove/{id}")
     public String removeProduct(@PathVariable("id") Long id, HttpSession session) {
+        demoSession(session);
         сartService.remove (id, session);
         return "redirect:/cart";
     }
 
     @GetMapping("/removeItem/{id}")
     public String removeItem(@PathVariable("id") Long id, HttpSession session) {
+        demoSession(session);
         сartService.removeItem(id, session);
         return "redirect:/cart";
     }
 
     @GetMapping("/clear")
     public String removeProduct(HttpSession session) {
+        demoSession(session);
         сartService.clear(session);
         return "redirect:/cart";
     }
 
+    public void demoSession(HttpSession session){
+        System.out.println ("session.getId () =" + session.getId ());
+    }
 
 
 

@@ -9,10 +9,10 @@
 
   <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
   <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}"/>
 </head>
 
@@ -31,6 +31,7 @@
         <div class="panel-title">Регистрация нового пользователя</div>
       </div>
 
+      <div class="border-gray">
       <div style="padding-top: 30px" class="panel-body">
         <form th:action="@{/register/processRegistrationForm}"
               th:object="${systemUser}" method="post" class="form-horizontal">
@@ -94,6 +95,7 @@
 
         </form>
       </div>
+    </div>
     </div>
   </div>
 </div>

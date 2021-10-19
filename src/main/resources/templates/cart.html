@@ -11,20 +11,19 @@
 
 <body>
 
-
-
 <div th:replace="~{navigation :: navi(Home)}" />
 
 <div th:if="${shoppingCart.isEmpty}" class="container">
     <br>
-    <h1>Ваша корзина пуста</h1>
-    Необходимо добавить товары в во вкладке каталог
+    <h1>Корзина пуста</h1>
+    <p>Необходимо добавить товары в во вкладке каталог</p>
 </div>
 
 <div th:if="${!shoppingCart.isEmpty}" class="container">
     <br>
     <h1>Корзина</h1>
-    <table class="table">
+    <div class="border-gray">
+    <table class="table ">
         <thead>
         <tr>
             <th>Категория</th>
@@ -67,6 +66,7 @@
         <td/>
         </tr>
     </table>
+    </div>
 </div>
 
 </body>
