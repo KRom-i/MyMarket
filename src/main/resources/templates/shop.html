@@ -11,7 +11,9 @@
 <div th:replace="~{navigation :: navi(Home)}" />
 
 <div class="container">
-
+    <div class="cart-panel">
+        <h6>Общая сумма в корзине&nbsp;<span id="cart-total-price">0.00</span>&nbsp;руб.</h6>
+    </div>
     <div class="border-gray">
     <div>
         <i>Кол-во товаров на странице</i>
@@ -67,9 +69,8 @@
             </td>
             <td th:text="${product.price}"/>
             <td>
-                <form th:action="@{'/shop/addCartItem/' + ${product.id}}">
-                    <input type="submit" class="btn btn-primary" value="Добавить в корзину"/>
-                </form>
+                <button class="btn btn-primary"
+                        th:onclick="'addProductToCart('+ ${product.id} +');'">Добавить</button>
             <td/>
         </tr>
     </table>
@@ -86,7 +87,9 @@
     </div>
 
 
-
+    <script type="text/javascript" src="webjars/sockjs-client/sockjs.min.js"></script>
+    <script type="text/javascript" src="webjars/stomp-websocket/stomp.min.js"></script>
+    <script type="text/javascript" src="js/shop.js"></script>
 </div>
 
 </body>

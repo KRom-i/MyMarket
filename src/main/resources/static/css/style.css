@@ -41,3 +41,12 @@ body{
   border-bottom-right-radius: 10px;
   box-shadow: 10px 13px 7px 5px rgba(52, 58, 64, 0.5);
 }
+
+.cart-panel{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product_item{
+  background-color: #e1edf9;
+}
