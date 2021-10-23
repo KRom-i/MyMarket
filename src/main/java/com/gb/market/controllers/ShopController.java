@@ -1,7 +1,7 @@
 package com.gb.market.controllers;
 
 
-import com.gb.market.entities.market.Product;
+import com.gb.market.entities.Product;
 import com.gb.market.services.ProductService;
 import com.gb.market.services.СartService;
 import org.springframework.beans.factory.annotation.Autowired;

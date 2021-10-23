@@ -1,6 +1,6 @@
 package com.gb.market.repositories;
 
-import com.gb.market.entities.user.Role;
+import com.gb.market.entities.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

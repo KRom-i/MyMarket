@@ -1,7 +1,7 @@
 package com.gb.market.services;
 
-import com.gb.market.entities.market.Category;
-import com.gb.market.entities.market.Product;
+import com.gb.market.entities.Category;
+import com.gb.market.entities.Product;
 import com.gb.market.repositories.ProductRepository;
 import com.gb.market.utils.ParamsPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-
-import static java.util.Objects.isNull;
 
 
 @Service

@@ -33,6 +33,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" th:href="@{/profile}">Информация о пользователе</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/order/history}">История заказов</a></li>
                                     <li sec:authorize="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/admin}">Администрирование</a></li>
                                 </ul>
                             </li>

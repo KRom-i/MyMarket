@@ -1,7 +1,7 @@
 package com.gb.market.repositories;
 
 
-import com.gb.market.entities.market.Category;
+import com.gb.market.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

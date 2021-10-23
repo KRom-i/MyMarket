@@ -1,7 +1,6 @@
 package com.gb.market.utils;
 
-import com.gb.market.entities.market.Product;
-import org.springframework.data.domain.Page;
+import com.gb.market.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 

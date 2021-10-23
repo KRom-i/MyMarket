@@ -1,6 +1,6 @@
 package com.gb.market.config;
 
-import com.gb.market.entities.user.User;
+import com.gb.market.entities.User;
 import com.gb.market.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,12 +18,22 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private UserService userService;
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+	public void onAuthenticationSuccess(HttpServletRequest request,
+										HttpServletResponse response,
+										Authentication authentication)
 			throws IOException, ServletException {
 		String userName = authentication.getName();
 		User theUser = userService.findByUserName(userName);
+
 		HttpSession session = request.getSession();
 		session.setAttribute("user", theUser);
-		response.sendRedirect(request.getContextPath() + "/");
+
+		String referrer = (String) session.getAttribute ("current_referer");
+		if (referrer == null){
+			referrer = request.getContextPath();
+		}
+
+		response.sendRedirect(referrer);
 	}
+
 }

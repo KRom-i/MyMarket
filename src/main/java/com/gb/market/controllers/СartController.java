@@ -1,6 +1,6 @@
 package com.gb.market.controllers;
 
-import com.gb.market.entities.market.ShoppingCart;
+import com.gb.market.entities.ShoppingCart;
 import com.gb.market.services.СartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

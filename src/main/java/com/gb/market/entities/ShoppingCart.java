@@ -1,11 +1,11 @@
-package com.gb.market.entities.market;
+package com.gb.market.entities;
 
+import com.gb.market.entities.OrderItem;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import static java.util.Objects.isNull;
@@ -13,14 +13,15 @@ import static java.util.Objects.isNull;
 
 @Component
 @Data
+@NoArgsConstructor
 public class ShoppingCart {
 
 
-    private List<OrderItem> orderItems;
+    private List<com.gb.market.entities.OrderItem> orderItems;
     private Double totalPrice;
     private Long quantity;
 
-    public List<OrderItem> getOrderItems () {
+    public List<com.gb.market.entities.OrderItem> getOrderItems () {
         if (isNull (orderItems)){
             orderItems = new ArrayList<> ();
         }
@@ -29,11 +30,11 @@ public class ShoppingCart {
 
     public void add (Product product) {
 
-        OrderItem item = getOrderItemFromProduct (product.getId ());
+        com.gb.market.entities.OrderItem item = getOrderItemFromProduct (product.getId ());
 
         if (isNull (item)){
 
-            item = new OrderItem ();
+            item = new com.gb.market.entities.OrderItem ();
             item.setQuantity (1L);
             item.setItemPrice (product.getPrice ());
             item.setTotalPrice (product.getPrice ());
@@ -51,7 +52,7 @@ public class ShoppingCart {
 
     public void remove (Product product) {
 
-        OrderItem item = getOrderItemFromProduct (product.getId ());
+        com.gb.market.entities.OrderItem item = getOrderItemFromProduct (product.getId ());
 
         if (isNull (item)){
             return;
@@ -71,7 +72,7 @@ public class ShoppingCart {
     }
 
     public void removeItem (Long id) {
-        OrderItem item = getOrderItemFromProduct (id);
+        com.gb.market.entities.OrderItem item = getOrderItemFromProduct (id);
         if (isNull (item)){
            return;
         }
@@ -85,15 +86,16 @@ public class ShoppingCart {
     }
 
     private void calcQuantity() {
-        this.quantity = getOrderItems ().stream().mapToLong (OrderItem::getQuantity).sum ();
+        this.quantity = getOrderItems ().stream().mapToLong (com.gb.market.entities.OrderItem::getQuantity).sum ();
     }
 
     private void calcTotalPrice () {
-        this.totalPrice = getOrderItems ().stream().mapToDouble (OrderItem::getTotalPrice).sum ();
+        this.totalPrice = getOrderItems ().stream().mapToDouble (com.gb.market.entities.OrderItem::getTotalPrice).sum ();
     }
 
     public void clear () {
         getOrderItems ().clear ();
+        calculator();
     }
 
     public boolean isEmpty(){

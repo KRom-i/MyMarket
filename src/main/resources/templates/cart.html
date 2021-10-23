@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Интернет-магазин корзина клиента</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -24,50 +25,45 @@
     <div class="container"><h2 class="heading text_bg text_optical">Корзина</h2></div>
     <hr class="line">
     <div class="container">
+        <div class="cart-panel custom_panel" style="border-radius: 10px; padding: 5px">
+            <div class="text_md text_dark">
+                Товаров:&nbsp;<span class="text_md text_price" th:text="${shoppingCart.quantity}"></span>
+                <span class="text_md text_price">&nbsp;шт.</span>
+            </div>
+            <div class="text_md text_dark">
+                Общая сумма:&nbsp;<span class="text_md text_price" th:text="${shoppingCart.totalPrice}"></span>
+                <span class="text_md text_price">&nbsp;&#8381;</span>
+            </div>
+            <a class="btn_dark" sec:authorize="isAuthenticated()" th:href="@{/order}">Оформить заказ</a>
+        </div>
         <div class="custom_panel">
-            <table class="table ">
-                <thead>
-                <tr>
+            <table class="table text_dark">
+                <thead class="text_price">
                     <th>Категория</th>
-                    <th>Название товара</th>
+                    <th>Наименование товара</th>
+                    <th>Цена за шт.</th>
+                    <th>Общая цена</th>
                     <th>Количество</th>
-                    <th>Цена</th>
-                    <th></th>
-                </tr>
                 </thead>
-
                 <tr th:each="item : ${shoppingCart.getOrderItems}">
                     <td th:text="${item.product.category.title}"/>
                     <td>
                         <span style="font-weight: bold;" th:text="${item.product.title}"></span>
                     </td>
-                    <td th:text="${item.quantity}">
-                    </td>
+                    <td th:text="${item.itemPrice}"/>
                     <td th:text="${item.totalPrice}"/>
-                    <td style="display: flex; float: right;">
-                        <form style="margin-right: 2px;" th:action="@{'/cart/remove/' + ${item.product.id}}">
-                            <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="-"/>
-                        </form>
-                        <form style="margin-right: 2px;" th:action="@{'/cart/add/' + ${item.product.id}}">
-                            <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="+"/>
-                        </form>
-                        <form  th:action="@{'/cart/removeItem/' + ${item.product.id}}">
-                            <input type="submit" class="btn btn-primary" value="Удалить из корзины"/>
-                        </form>
-                    <td/>
-                </tr>
-                <tr>
-                    <td/>
-                    <td/>
-                    <td th:text="${shoppingCart.quantity}"/>
-                    <td th:text="${shoppingCart.totalPrice}"/>
-                    <td style="float: right;">
-                        <form th:action="@{'/cart/clear'}">
-                            <input type="submit" class="btn btn-primary" value="Очистить корзину"/>
-                        </form>
+                    <td>
+                        <span th:text="${item.quantity}"></span>
+                        <div style="display: flex; float: right;">
+                        <a th:if="${item.quantity > 1}" class="btn_dark btn_mini"
+                                th:href="@{'/cart/remove/' + ${item.product.id}}">-</a>
+                        <a class="btn_dark btn_mini" th:href="@{'/cart/add/' + ${item.product.id}}">+</a>
+                        <a class="btn_dark btn_mini" th:href="@{'/cart/removeItem/' + ${item.product.id}}">x</a>
+                        </div>
                     <td/>
                 </tr>
             </table>
+            <a class="btn_dark" th:href="@{'/cart/clear'}">Очистить корзину</a>
         </div>
     </div>
 </div>

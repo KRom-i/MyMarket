@@ -1,8 +1,8 @@
 package com.gb.market.services;
 
-import com.gb.market.entities.user.Role;
-import com.gb.market.entities.user.SystemUser;
-import com.gb.market.entities.user.User;
+import com.gb.market.entities.Role;
+import com.gb.market.entities.SystemUser;
+import com.gb.market.entities.User;
 import com.gb.market.repositories.RoleRepository;
 import com.gb.market.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

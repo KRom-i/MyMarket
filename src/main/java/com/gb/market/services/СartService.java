@@ -1,7 +1,7 @@
 package com.gb.market.services;
 
-import com.gb.market.entities.market.Product;
-import com.gb.market.entities.market.ShoppingCart;
+import com.gb.market.entities.Product;
+import com.gb.market.entities.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

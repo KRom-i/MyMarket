@@ -72,3 +72,8 @@ function priceToString(price){
     return parseFloat(price).toFixed(2).
     replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
 }
+
+function priceToStringAndRub(price){
+    return parseFloat(price).toFixed(2).
+    replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ') + "&nbsp;&#8381;";
+}

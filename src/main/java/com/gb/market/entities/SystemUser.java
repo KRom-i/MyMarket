@@ -1,4 +1,4 @@
-package com.gb.market.entities.user;
+package com.gb.market.entities;
 
 import com.gb.market.validation.FieldMatch;
 import lombok.Data;

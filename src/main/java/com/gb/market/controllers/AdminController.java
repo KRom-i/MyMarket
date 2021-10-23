@@ -1,9 +1,6 @@
 package com.gb.market.controllers;
 
-import com.gb.market.entities.market.Category;
-import com.gb.market.entities.market.Product;
-import com.gb.market.entities.user.SystemUser;
-import com.gb.market.services.CategoryService;
+import com.gb.market.entities.Product;
 import com.gb.market.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

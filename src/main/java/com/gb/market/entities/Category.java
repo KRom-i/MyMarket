@@ -1,9 +1,10 @@
-package com.gb.market.entities.market;
+package com.gb.market.entities;
 
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -17,4 +18,5 @@ public class Category {
 
     @Column(name = "title")
     private String title;
+
 }

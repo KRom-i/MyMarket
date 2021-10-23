@@ -53,11 +53,19 @@ label {
   letter-spacing: 0.04em;
   color: #FFFFFF;
   padding: 5px 15px;
+  opacity: 1;
 }
 
 .btn_dark:hover {
   background: #5e9fda;
   border-color: #5e9fda;
+}
+
+.btn_mini {
+  padding: 2px;
+  border-radius: 50px;
+  min-width: 25px;
+  margin-left: 2px;
 }
 
 .btn_light {
@@ -135,7 +143,7 @@ label {
 }
 
 .text_price {
-  color: #ea0505;
+  color: #b91616;
 }
 
 .text_center {
@@ -349,6 +357,11 @@ label {
 .footer_top {
   padding-top: 15px;
   min-height: 115px;
+}
+
+.tb_thead {
+  background: #5A98D0;
+  color: #e1edf9;
 }
 
 .footer_line {

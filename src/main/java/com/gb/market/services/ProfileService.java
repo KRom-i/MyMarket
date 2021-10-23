@@ -1,6 +1,6 @@
 package com.gb.market.services;
 
-import com.gb.market.entities.user.User;
+import com.gb.market.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

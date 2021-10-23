@@ -1,4 +1,4 @@
-package com.gb.market.entities.user;
+package com.gb.market.entities;
 
 import javax.persistence.*;
 
@@ -36,8 +36,4 @@ public class Role {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
-	}
 }

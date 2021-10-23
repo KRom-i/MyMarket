@@ -1,7 +1,7 @@
 package com.gb.market.controllers;
 
-import com.gb.market.entities.user.SystemUser;
-import com.gb.market.entities.user.User;
+import com.gb.market.entities.SystemUser;
+import com.gb.market.entities.User;
 import com.gb.market.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

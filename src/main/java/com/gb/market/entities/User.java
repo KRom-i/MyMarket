@@ -1,8 +1,9 @@
-package com.gb.market.entities.user;
+package com.gb.market.entities;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.Collection;
 @Table(name = "users")
 @Data
 @ToString
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +41,12 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ToString.Exclude
     private Collection<Role> roles;
 
-    public User() {
-    }
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private Collection<Order> orders;
 
     public User(String userName, String password, String firstName, String lastName, String email, String phone) {
         this.userName = userName;
@@ -63,6 +67,5 @@ public class User {
         this.roles = roles;
         this.phone = phone;
     }
-
 
 }

@@ -1,7 +1,7 @@
 package com.gb.market.services;
 
 
-import com.gb.market.entities.market.Category;
+import com.gb.market.entities.Category;
 import com.gb.market.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

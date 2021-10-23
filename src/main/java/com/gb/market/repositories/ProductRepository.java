@@ -1,6 +1,6 @@
 package com.gb.market.repositories;
 
-import com.gb.market.entities.market.Product;
+import com.gb.market.entities.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
