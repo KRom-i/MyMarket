@@ -34,7 +34,7 @@ public class ParamsPage {
 
     public void setSize (Integer size) {
         if (isNull (size)) {
-            size = 5;
+            size = 30;
         }
         this.size = size;
     }
@@ -82,7 +82,6 @@ public class ParamsPage {
 
         return specification;
     }
-
 
     private Specification<Product> titleContains() {
         return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) ->

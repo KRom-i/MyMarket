@@ -3,110 +3,104 @@
 <head>
     <meta charset="utf-8"/>
 
-    <title>Регистрация пользователя</title>
+    <title>Интернет-магазин добавление нового товара</title>
 
     <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
 </head>
 
 <body>
-
-<div th:replace="~{navigation :: navi(Admin)}"/>
-
-<div class="container">
-
-    <h2>Добавление нового товара</h2>
-
-    <div class="border-gray">
-        <form  th:action="@{/admin/addNewProduct}" th:object="${product}" method="post" >
-
-            <div class="form-group">
-                <label class="form-label">Категория товара</label>
-                <select class="form-control" th:field="*{category.id}" >
-                    <option th:each="choice : ${categories}"
-                            th:value="${choice.id}"
-                            th:attr="choiceid=${choice.id},
+<div class="constructor">
+    <div class="top">
+        <div th:replace="~{navigation :: navi(Admin)}"/>
+        <div class="container"><h2 class="heading text_bg text_optical">Администрирование</h2></div>
+        <hr class="line">
+        <div class="container">
+            <div class="custom_panel">
+                <form  th:action="@{/admin/addNewProduct}" th:object="${product}" method="post" >
+                    <div class="form-group">
+                        <label class="form-label">Категория товара</label>
+                        <select class="form-control" th:field="*{category.id}" >
+                            <option th:each="choice : ${categories}"
+                                    th:value="${choice.id}"
+                                    th:attr="choiceid=${choice.id},
                                 categoryid=*{category.id}, showselected=(${choice.id} == *{category.id})"
-                            th:selected="(${choice.id} == *{category.id})"
-                            th:readonly="(${choice.id} == *{category.id})"
-                            th:text="${choice.title}"></option>
-                </select>
-            </div>
+                                    th:selected="(${choice.id} == *{category.id})"
+                                    th:readonly="(${choice.id} == *{category.id})"
+                                    th:text="${choice.title}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Наименование товара</label>
+                        <input class="form-control" type="text"
+                               th:field="*{title}" placeholder="" />
+                    </div>
 
+                    <div class="form-group">
+                        <label class="form-label">Краткое описание товара</label>
+                        <textarea class="form-control" type="text"
+                                  th:field="*{shortDescription}" placeholder="" ></textarea>
+                    </div>
 
-            <div class="form-group">
-                <label class="form-label">Наименование товара</label>
-                <input class="form-control" type="text"
-                       th:field="*{title}" placeholder="" />
-            </div>
+                    <div class="form-group">
+                        <label class="form-label">Полное описание товара</label>
+                        <textarea class="form-control" type="text"
+                                  th:field="*{fullDescription}" placeholder=""></textarea>
+                    </div>
 
-            <div class="form-group">
-                <label class="form-label">Краткое описание товара</label>
-                <textarea class="form-control" type="text"
-                          th:field="*{shortDescription}" placeholder="" ></textarea>
-            </div>
+                    <div class="form-group">
+                        <label class="form-label">Цена</label>
+                        <input class="form-control" type="number" th:field="*{price}" placeholder=""/>
+                    </div>
 
-            <div class="form-group">
-                <label class="form-label">Полное описание товара</label>
-                <textarea class="form-control" type="text"
-                          th:field="*{fullDescription}" placeholder=""></textarea>
-            </div>
+                    <div class="form-group">
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn_dark" style="margin-top: 25px; min-width: 150px">Сохранить</button>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label class="form-label">Цена</label>
-                <input class="form-control" type="number" th:field="*{price}" placeholder=""/>
-            </div>
-
-            <div class="form-group">
-                <div class="d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+                <div th:if="${message} != null" th:text="${message}"
+                     class="alert alert-success col-xs-offset-1 col-xs-10">
+                </div>
+                <div th:if="${error} != null" th:text="${error}"
+                     class="alert alert-danger col-xs-offset-1 col-xs-10">
                 </div>
             </div>
-
-        </form>
-
-        <div th:if="${message} != null" th:text="${message}"
-             class="alert alert-success col-xs-offset-1 col-xs-10">
+            <div class="custom_panel">
+                <table th:if="${!productsAdded.isEmpty}" class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Категория</th>
+                        <th>Наименование товара</th>
+                        <th>Цена</th>
+                        <th>Дата и время добавления</th>
+                    </tr>
+                    </thead>
+                    <tr class="responsive-row" th:each="product : ${productsAdded}">
+                        <td th:text="${product.id}"/>
+                        <td th:text="${product.category.title}"/>
+                        <td>
+                            <span style="font-weight: bold;" th:text="${product.title}"></span>
+                            <br>
+                            <span th:text="${product.shortDescription}"></span>
+                        </td>
+                        <td th:text="${product.price}"/>
+                        <td th:text="${product.createAt}"/>
+                    </tr>
+                </table>
+            </div>
         </div>
-
-        <div th:if="${error} != null" th:text="${error}"
-             class="alert alert-danger col-xs-offset-1 col-xs-10">
-        </div>
-
     </div>
-
-
-    <div class="border-gray">
-        <table th:if="${!productsAdded.isEmpty}" class="table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Категория</th>
-                <th>Наименование товара</th>
-                <th>Цена</th>
-                <th>Дата и время добавления</th>
-            </tr>
-            </thead>
-
-            <tr class="responsive-row" th:each="product : ${productsAdded}">
-
-                <td th:text="${product.id}"/>
-                <td th:text="${product.category.title}"/>
-                <td>
-                    <span style="font-weight: bold;" th:text="${product.title}"></span>
-                    <br>
-                    <span th:text="${product.shortDescription}"></span>
-                </td>
-                <td th:text="${product.price}"/>
-                <td th:text="${product.createAt}"/>
-            </tr>
-        </table>
-    </div>
-
+    <div th:replace="~{footer :: footer()}"/>
 </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </body>
 </html>
