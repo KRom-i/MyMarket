@@ -2,20 +2,46 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Market</title>
+    <title>Интернет-магазин</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
 </head>
 
 <body>
-
-<div th:replace="~{navigation :: navi(Home)}" />
-
-<div class="container">
-    <br>
-    <h1>Интернет-магазин</h1>
-    Информация...
+<div class="constructor">
+    <div class="top">
+        <div th:replace="~{navigation :: navi(Home)}"/>
+        <div class="top">
+            <div class="container">
+                <h1 class="heading text_bg text_optical">Интернет-магазин</h1>
+            </div>
+        </div>
+        <hr class="line">
+        <div class="container">
+            <p class="text_sm text_dark"><span class="text_price">Lorem ipsum dolor sit, amet
+                consectetur adipisicing elit. Fugiat, eligendi.</span> Amet mollitia vero aut
+                reiciendis quos eveniet iusto beatae soluta quaerat voluptate maiores,
+                impedit nesciunt eos magni est ea perferendis molestiae totam modi illum
+                placeat sint fugiat. Sit magni aspernatur ducimus culpa quasi cumque doloremque
+                exercitationem fugit. Quod nisi consequatur veniam quis vitae voluptatibus eligendi
+                sed laudantium aut, consequuntur animi. Eligendi perferendis aliquam qui molestias
+                nesciunt fugiat natus totam id enim laudantium molestiae necessitatibus laboriosam
+                quibusdam debitis nostrum autem cumque temporibus, libero eaque! Odio dolorum pariatur
+                nam est suscipit eveniet perferendis, minima sed expedita quidem magnam iure commodi
+                hic eum consequatur debitis architecto esse in fugiat, temporibus facilis, autem aliquam quia
+                tempora. Non atque vero ducimus mollitia dolores? <span class="text_price">Ipsa dolorem itaque sit perspiciatis adipisci
+                quidem cupiditate! Eligendi ratione autem ipsa velit facere aliquam sapiente perferendis facilis
+                explicabo quis cupiditate harum, natus repudiandae culpa. </span>Modi consectetur consequatur
+                voluptatum vero iure quae explicabo, iste ex cum nobis sequi laborum molestiae laboriosam fuga,
+                quisquam tempore rem neque, accusamus voluptates aliquid necessitatibus repudiandae distinctio
+                quo numquam.</p>
+        </div>
+    </div>
+    <div th:replace="~{footer :: footer()}"/>
 </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </body>
 </html>

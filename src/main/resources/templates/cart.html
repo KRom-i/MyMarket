@@ -2,72 +2,78 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Shopping cart</title>
+    <title>Интернет-магазин корзина клиента</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
 </head>
 
 <body>
-
-<div th:replace="~{navigation :: navi(Home)}" />
-
-<div th:if="${shoppingCart.isEmpty}" class="container">
-    <br>
-    <h1>Корзина пуста</h1>
-    <p>Необходимо добавить товары в во вкладке каталог</p>
+<div class="constructor">
+    <div class="top">
+<div th:replace="~{navigation :: navi(Home)}"/>
+<div th:if="${shoppingCart.isEmpty}" >
+    <div class="container"><h2 class="heading text_bg text_optical">Корзина пуста</h2></div>
+    <hr class="line">
+    <div class="container"><p class="text_optical text_sm">Необходимо добавить товары.&nbsp;
+        <a href="/shop" class="text_optical text_sm text_price">Перейти в коталог</a></p></div>
 </div>
+<div th:if="${!shoppingCart.isEmpty}">
+    <div class="container"><h2 class="heading text_bg text_optical">Корзина</h2></div>
+    <hr class="line">
+    <div class="container">
+        <div class="custom_panel">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Категория</th>
+                    <th>Название товара</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-<div th:if="${!shoppingCart.isEmpty}" class="container">
-    <br>
-    <h1>Корзина</h1>
-    <div class="border-gray">
-    <table class="table ">
-        <thead>
-        <tr>
-            <th>Категория</th>
-            <th>Название товара</th>
-            <th>Количество</th>
-            <th>Цена</th>
-            <th></th>
-        </tr>
-        </thead>
-
-        <tr th:each="item : ${shoppingCart.getOrderItems}">
-            <td th:text="${item.product.category.title}"/>
-            <td>
-                <span style="font-weight: bold;" th:text="${item.product.title}"></span>
-            </td>
-            <td th:text="${item.quantity}">
-            </td>
-            <td th:text="${item.totalPrice}"/>
-            <td style="display: flex; float: right;">
-                <form style="margin-right: 2px;" th:action="@{'/cart/remove/' + ${item.product.id}}">
-                    <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="-"/>
-                </form>
-                <form style="margin-right: 2px;" th:action="@{'/cart/add/' + ${item.product.id}}">
-                    <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="+"/>
-                </form>
-                <form  th:action="@{'/cart/removeItem/' + ${item.product.id}}">
-                    <input type="submit" class="btn btn-primary" value="Удалить из корзины"/>
-                </form>
-            <td/>
-        </tr>
-        <tr>
-        <td/>
-        <td/>
-        <td th:text="${shoppingCart.quantity}"/>
-        <td th:text="${shoppingCart.totalPrice}"/>
-        <td style="float: right;">
-            <form th:action="@{'/cart/clear'}">
-                <input type="submit" class="btn btn-primary" value="Очистить корзину"/>
-            </form>
-        <td/>
-        </tr>
-    </table>
+                <tr th:each="item : ${shoppingCart.getOrderItems}">
+                    <td th:text="${item.product.category.title}"/>
+                    <td>
+                        <span style="font-weight: bold;" th:text="${item.product.title}"></span>
+                    </td>
+                    <td th:text="${item.quantity}">
+                    </td>
+                    <td th:text="${item.totalPrice}"/>
+                    <td style="display: flex; float: right;">
+                        <form style="margin-right: 2px;" th:action="@{'/cart/remove/' + ${item.product.id}}">
+                            <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="-"/>
+                        </form>
+                        <form style="margin-right: 2px;" th:action="@{'/cart/add/' + ${item.product.id}}">
+                            <input type="submit" style="min-width: 50px;" class="btn btn-primary" value="+"/>
+                        </form>
+                        <form  th:action="@{'/cart/removeItem/' + ${item.product.id}}">
+                            <input type="submit" class="btn btn-primary" value="Удалить из корзины"/>
+                        </form>
+                    <td/>
+                </tr>
+                <tr>
+                    <td/>
+                    <td/>
+                    <td th:text="${shoppingCart.quantity}"/>
+                    <td th:text="${shoppingCart.totalPrice}"/>
+                    <td style="float: right;">
+                        <form th:action="@{'/cart/clear'}">
+                            <input type="submit" class="btn btn-primary" value="Очистить корзину"/>
+                        </form>
+                    <td/>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
-
+    </div>
+    <div th:replace="~{footer :: footer()}"/>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </body>
 </html>

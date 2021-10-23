@@ -2,21 +2,32 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Admin</title>
+    <title>Интернет-магазин администрирование</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
 </head>
 
 <body>
-
-<div th:replace="~{navigation :: navi(AdminDashboard)}" />
-
-<div class="container">
-    <h1>Администрирование</h1>
-
-    <a href="/admin/productForm">Добавить товар</a>
-
+<div class="constructor">
+    <div class="top">
+        <div th:replace="~{navigation :: navi(AdminDashboard)}" />
+        <div class="container"><h2 class="heading text_bg text_optical">Администрирование</h2></div>
+        <hr class="line">
+        <div class="container">
+            <div class="custom_panel">
+                <ul>
+                    <li>
+                        <a href="/admin/productForm" class="text_dark">Добавить товар</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{footer :: footer()}"/>
 </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </body>
 </html>
