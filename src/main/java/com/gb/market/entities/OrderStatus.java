@@ -20,6 +20,4 @@ public class OrderStatus {
     @Column(name = "name")
     private String title;
 
-    @OneToMany(mappedBy = "status")
-    private Collection<Order> orders;
 }

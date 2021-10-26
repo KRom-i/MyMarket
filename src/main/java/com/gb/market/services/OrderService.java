@@ -4,7 +4,6 @@ import com.gb.market.entities.Order;
 import com.gb.market.entities.OrderItem;
 import com.gb.market.entities.ShoppingCart;
 import com.gb.market.entities.User;
-import com.gb.market.producer.SenderApp;
 import com.gb.market.repositories.OrderItemRepository;
 import com.gb.market.repositories.OrderRepository;
 import com.gb.market.repositories.OrderStatusRepo;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 
 @Service
 public class OrderService {
@@ -25,8 +23,6 @@ public class OrderService {
     private OrderItemRepository orderItemRepository;
     @Autowired
     OrderStatusRepo orderStatusRepo;
-    @Autowired
-    private SenderApp sender;
 
 
     public Order save (ShoppingCart cart, HttpSession session) {
@@ -41,11 +37,11 @@ public class OrderService {
 
         orderRepository.save (order);
 
-        for (OrderItem orderItem: cart.getOrderItems ()) {
-            orderItem.setOrder (order);
-            order.getOrderItems ().add (orderItemRepository.save (orderItem));
-        }
-
+        cart.getOrderItems ().forEach ((item) ->{
+            item.setOrder (order);
+            order.getOrderItems ().add (orderItemRepository.save (item));
+        });
+        
         cart.clear ();
 
         sendMsg(order);
@@ -61,6 +57,6 @@ public class OrderService {
     private void sendMsg(Order order){
         String message = String.format("NEW ORDER User: %s Items: %s",
                 order.getUser().getUserName(), order.getOrderItems());
-        sender.send(message);
+        System.out.println (message);
     };
 }

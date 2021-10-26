@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/order")
@@ -29,7 +31,6 @@ public class OrderController {
         return "order_save";
     }
 
-
     @PostMapping("/save")
     public String addProduct(Model model, HttpSession session) {
         ShoppingCart cart = сartService.getCart (session);
@@ -43,4 +44,6 @@ public class OrderController {
         orderService.getHistory();
         return "index";
     }
+
+
 }
