@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.gb.market.MarketApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.444 s <<< FAILURE! - in com.gb.market.MarketApplicationTests
-contextLoads  Time elapsed: 0 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.192 s <<< FAILURE! - in com.gb.market.MarketApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'shoppingCartAspect': Unsatisfied dependency expressed through field 'сartService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'сartService': Unsatisfied dependency expressed through field 'productService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productService' defined in file [C:\Users\Роман\Documents\JAVA_Spring\market\target\classes\com\gb\market\services\ProductService.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Unexpected AOP exception; nested exception is java.lang.IllegalStateException: Unable to load cache item
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'сartService': Unsatisfied dependency expressed through field 'productService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productService' defined in file [C:\Users\Роман\Documents\JAVA_Spring\market\target\classes\com\gb\market\services\ProductService.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Unexpected AOP exception; nested exception is java.lang.IllegalStateException: Unable to load cache item
@@ -13,7 +13,7 @@ Caused by: java.lang.VerifyError:
 Stack map does not match the one at exception handler 9
 Exception Details:
   Location:
-    com/gb/market/services/ProductService$$EnhancerBySpringCGLIB$$5860865a.<init>()V @9: athrow
+    com/gb/market/services/ProductService$$EnhancerBySpringCGLIB$$dad701e4.<init>()V @9: athrow
   Reason:
     Current frame's flags are not assignable to stack map frame's.
   Current Frame:
