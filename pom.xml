@@ -114,11 +114,11 @@
 <!--            <version>5.1.2.RELEASE</version>-->
 <!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>5.1.2.RELEASE</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-aop</artifactId>-->
+<!--            <version>5.1.2.RELEASE</version>-->
+<!--        </dependency>-->
 
         <!-- rabbitmq -->
 <!--        <dependency>-->
@@ -140,9 +140,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <testFailureIgnore>true</testFailureIgnore>-->
+<!--                </configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

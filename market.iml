@@ -35,8 +35,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/test" />
       <excludeFolder url="file://$MODULE_DIR$/.mvn" />
       <excludeFolder url="file://$MODULE_DIR$/JavaClasses" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -66,6 +66,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.5" level="project" />
@@ -79,6 +80,7 @@
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.32" level="project" />
     <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.10" level="project" />
@@ -151,7 +153,5 @@
     <orderEntry type="library" name="Maven: org.webjars:sockjs-client:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:stomp-websocket:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.10" level="project" />
   </component>
 </module>
