@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Интернет-магазин вход в личный кабинет</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
+</head>
+
+<body>
+<div class="constructor">
+    <div class="top">
+        <div th:replace="~{navigation :: navi(Home)}"/>
+        <div class="container">
+            <h2 class="heading text_bg text_optical">Вход в личный кабинет</h2>
+        </div>
+        <hr class="line">
+        <div class="container">
+            <div class="custom_panel" style="max-width: 450px">
+                <form th:action="@{/authenticateTheUser}" method="POST">
+                    <div class="form-group">
+                        <label >Имя пользователя:</label>
+                        <input type="text" name="username" class="form-control" placeholder="Введите имя пользователя">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль:</label>
+                        <input type="password" name="password" placeholder="Введите пароль" class="form-control" >
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn_dark" style="width: 100%; margin-top: 25px">Войти</button>
+                    </div>
+                </form>
+
+                <div th:if="${param.logout} != null">
+                    <div style="margin-top: 10px;" class="alert alert-success col-xs-offset-1 col-xs-10">
+                        Вы вышли из системы.
+                    </div>
+                </div>
+
+                <div th:if="${param.error} != null">
+                    <div style="margin-top: 10px;" class="alert alert-danger col-xs-offset-1 col-xs-10">
+                        Неверное имя пользователя или пароль.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{footer :: footer()}"/>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+</body>
+</html>

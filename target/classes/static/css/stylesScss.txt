@@ -1,0 +1,30 @@
+
+---------- PING -----------
+$color_1: #c05ad0;
+$color_1_hover: #da64ec;
+$color_2: #FFFFFF;
+$color_3: #6c025b;
+$color_4: #e1edf9;
+$color_5: #eaa105;
+$box_shadow_1: 5px 20px 50px rgba(108, 2, 91, 0.2);
+$box_shadow_2: 5px 20px 50px rgba(218, 100, 236, 0.5);
+$box_shadow_3: 10px 20px 80px rgba(24, 30, 35, 0.7);
+$font_size_1: 16px;
+$font_size_2: 20px;
+$font_size_3: 36px;
+$font_size_4: 64px;
+
+---------- BLUE -----------
+$color_1: #5A98D0;
+$color_1_hover: #5e9fda;
+$color_2: #FFFFFF;
+$color_3: #316099;
+$color_4: #e1edf9;
+$color_5: #ea0505;
+$box_shadow_1: 5px 20px 50px rgba(16, 112, 177, 0.2);
+$box_shadow_2: 5px 20px 50px rgba(16, 112, 177, 0.5);
+$box_shadow_3: 10px 20px 80px rgba(24, 30, 35, 0.7);
+$font_size_1: 16px;
+$font_size_2: 20px;
+$font_size_3: 36px;
+$font_size_4: 64px;

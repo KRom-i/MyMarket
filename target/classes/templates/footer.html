@@ -1,0 +1,57 @@
+!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Интернет-магазин footer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+</head>
+<body>
+<div class="footer" th:fragment="footer()">
+    <div class="footer_top">
+        <div class="container">
+            <ul class="footer_info">
+                <li class="footer_info__item text_sm text_light">
+                    <ul class="footer_list">
+                        <li><a class="text_sm text_light text_optical a_light" th:href="@{/}">Интернет-магазин</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" th:href="@{/shop}">Коталог товаров</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" th:href="@{/cart}">Корзина</a></li>
+                    </ul>
+                </li>
+                </li>
+                <li class="footer_info__item text_sm text_light">
+                    <ul class="footer_list">
+                        <li><a class="text_sm text_light text_optical a_light" href="">Интернет-магазин</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" href="">+7-000 0000-0000</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" href="">mail@gmail.com</a></li>
+                    </ul>
+                </li>
+                </li>
+                <li class="footer_info__item text_sm text_light">
+                    <ul class="footer_list">
+                        <li><a class="text_sm text_light text_optical a_light" href="">Lorem ipsum dolor sit</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" href="">Lorem ipsum dolor sit</a></li>
+                        <li><a class="text_sm text_light text_optical a_light" href="">Lorem ipsum dolor sit</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr class="footer_line">
+<!--    <div class="footer_bottom">-->
+<!--        <div class="container">-->
+<!--            <ul class="footer_info">-->
+<!--                <li class="footer_info__item text_sm text_light text_optical">Интернет-магазин</li>-->
+<!--                <li class="footer_info__item text_sm text_light text_optical">+7-000 0000-0000</li>-->
+<!--                <li class="footer_info__item text_sm text_light text_optical">mail@gmail.com</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+</body>
+</html>

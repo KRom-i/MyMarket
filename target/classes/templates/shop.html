@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин коталог товаров</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
+</head>
+<body>
+<div class="constructor">
+    <div class="top">
+        <div th:replace="~{navigation :: navi(Home)}"/>
+        <div class="container">
+            <h2 class="heading text_bg text_optical">Коталог товаров</h2>
+        </div>
+        <hr class="line">
+        <div class="wrapper">
+            <div id="pager_left" class="pager_middle"><div id="btn_left" class="btn_page"></div></div>
+            <div class="container">
+                <div class="shop_wrapper">
+                    <div class="shop_menu">
+                        <div class="card_border" style="border-radius: 10px; padding: 5px">
+                            <div class="text_md text_dark">Найдено товаров:</div>
+                            <div class="text_md text_price"><span id="order_product">0</span>&nbsp;шт.</div>
+                        </div>
+                        <form class="filter card_border" style="border-radius: 10px; padding: 5px">
+                            <label class="text_md text_price">Фильтр</label>
+                            <input id="input_page_number" hidden th:value="${products.getNumber + 1}" th:name="page">
+                            <input id="input_page_size" hidden th:value="${products.getSize}" th:name="size">
+                            <label class="text_sm text_dark" for="input_title">Наименование:</label>
+                            <input id="input_title" th:value="${paramsPage.title}" th:name="title" type="text" placeholder="Ввод">
+                            <label class="text_sm text_dark" for="input_min_price">Минимальная:</label>
+                            <input id="input_min_price" th:value="${paramsPage.min}" th:name="min" type="number" placeholder="Цена">
+                            <label class="text_sm text_dark" for="input_max_price">Максимальная:</label>
+                            <input id="input_max_price" th:value="${paramsPage.max}" th:name="max" type="number" placeholder="Цена">
+                        </form>
+                        <div class="cart-panel card_border" style="border-radius: 10px; padding: 5px">
+                            <a class="text_md text_dark" href="/cart">Корзина</a>
+                            <div class="text_sm text_optical text_dark">Товаров:</div>
+                            <div class="text_md text_price"><span id="cart-order">0</span>&nbsp;шт.</div>
+                            <div class="text_sm text_optical text_dark">Общая сумма:</div>
+                            <div class="text_md text_price"><span id="cart-total-price">0.00</span>&nbsp;&#8381;</div>
+                        </div>
+                    </div>
+                    <div class="page_items">
+                        <div class="cards" id="product_cards"></div>
+                        <div class="pager" id="pager_bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="pager_right" class="pager_middle"><div id="btn_right" class="btn_page"></div></div>
+        </div>
+    </div>
+    <div th:replace="~{footer :: footer()}"/>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var page = /*[[${page}]]*/ 'default';
+    /*]]>*/</script>
+<script type="text/javascript" src="webjars/sockjs-client/sockjs.min.js"></script>
+<script type="text/javascript" src="webjars/stomp-websocket/stomp.min.js"></script>
+<script type="text/javascript" src="js/fetch.js"></script>
+<script type="text/javascript" src="js/product_card.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/shopping_cart.js"></script>
+<script type="text/javascript" src="js/pager_bottom.js"></script>
+<script type="text/javascript" src="js/product_cards.js"></script>
+</body>
+</html>
