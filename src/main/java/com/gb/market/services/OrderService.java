@@ -4,6 +4,7 @@ import com.gb.market.entities.Order;
 import com.gb.market.entities.OrderItem;
 import com.gb.market.entities.ShoppingCart;
 import com.gb.market.entities.User;
+import com.gb.market.producer.SenderApp;
 import com.gb.market.repositories.OrderItemRepository;
 import com.gb.market.repositories.OrderRepository;
 import com.gb.market.repositories.OrderStatusRepo;
@@ -24,6 +25,8 @@ public class OrderService {
     private OrderItemRepository orderItemRepository;
     @Autowired
     OrderStatusRepo orderStatusRepo;
+    @Autowired
+    private SenderApp sender;
 
 
     public Order save (ShoppingCart cart, HttpSession session) {
@@ -45,6 +48,8 @@ public class OrderService {
 
         cart.clear ();
 
+        sendMsg(order);
+
         return order;
     }
 
@@ -53,4 +58,9 @@ public class OrderService {
     }
 
 
+    private void sendMsg(Order order){
+        String message = String.format("NEW ORDER User: %s Items: %s",
+                order.getUser().getUserName(), order.getOrderItems());
+        sender.send(message);
+    };
 }
