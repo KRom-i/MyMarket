@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 
 @Service
@@ -59,9 +60,7 @@ public class ProductService {
         product.setCreateAt (LocalDateTime.now ());
 
         productRepository.save (product);
-
         return true;
-
     }
 
     private String getNewVendorCode(){

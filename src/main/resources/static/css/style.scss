@@ -321,7 +321,6 @@ label{
 .shop_menu{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 200px;
   height:70vh;
   position: sticky;
@@ -330,11 +329,13 @@ label{
 }
 
 .filter{
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
 }
 
 .cart-panel{
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
 }

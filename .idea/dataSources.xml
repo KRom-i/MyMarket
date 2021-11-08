@@ -8,11 +8,11 @@
       <jdbc-url>jdbc:mysql://localhost:3306/geek_market</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Amazon_market" uuid="42bd4b21-f268-4ad5-a277-c9bfc8944b0b">
+    <data-source source="LOCAL" name="Amazon" uuid="243a2609-847e-44d0-9580-312800c017fa">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://amazon-database.clfr0zozxfun.eu-west-3.rds.amazonaws.com:3306/market</jdbc-url>
+      <jdbc-url>jdbc:mysql://aablbvblpkiiu7.cnp8bjecbco5.us-east-1.rds.amazonaws.com:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
